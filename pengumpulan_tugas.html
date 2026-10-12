@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengumpulan Tugas Hacker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="/Image/Logo Hacker Trans.png" type="image/x-icon">
+    <!-- Konfigurasi Tailwind untuk mendeteksi class 'dark' -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #93c5fd; 
+            border-radius: 10px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #475569; 
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b82f6; 
+        }
+        
+        /* Menyembunyikan ikon tema secara default sebelum JS berjalan */
+        #theme-toggle-dark-icon,
+        #theme-toggle-light-icon {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen transition-colors duration-500 bg-gradient-to-br from-blue-50 via-blue-100 to-blue-300 dark:from-slate-900 dark:via-slate-800 dark:to-blue-950 flex items-center justify-center p-4 sm:p-8">
+
+    <!-- Container Utama (Glass Card) -->
+    <div class="bg-white/90 dark:bg-slate-900/80 backdrop-blur-xl border border-white/50 dark:border-slate-700 rounded-3xl shadow-2xl dark:shadow-[0_10px_40px_rgba(0,0,0,0.5)] w-full max-w-lg p-8 sm:p-10 relative overflow-hidden transition-all duration-500">
+        
+        <!-- Ornamen dekorasi background card -->
+        <div class="absolute -top-16 -right-16 w-32 h-32 bg-blue-400 rounded-full mix-blend-multiply filter blur-2xl opacity-20 dark:opacity-40 dark:bg-blue-600 transition-opacity"></div>
+        <div class="absolute -bottom-16 -left-16 w-32 h-32 bg-blue-600 rounded-full mix-blend-multiply filter blur-2xl opacity-20 dark:opacity-40 dark:bg-blue-400 transition-opacity"></div>
+
+        <!-- Tombol Toggle Tema (Sun/Moon) -->
+        <button id="theme-toggle" type="button" class="absolute top-6 right-6 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 transition-colors z-20">
+            <svg id="theme-toggle-dark-icon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+            <svg id="theme-toggle-light-icon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+        </button>
+
+        <div class="flex items-center justify-center space-x-6 mb-8 relative z-10 pt-4">
+            <img src="/Image/Logo Iot transpa.png" alt="Logo Lab IoT" class="h-16 w-auto object-contain  dark:drop-shadow-[0_0_15px_rgba(255,255,255,0.8)] transition-all duration-300 transform hover:scale-105" onerror="this.src='https://placehold.co/100x100/1e3a8a/ffffff?text=Logo+1'">
+            <div class="h-10 w-px bg-blue-200 dark:bg-slate-600 transition-colors"></div>
+            <img src="/Image/Logo Hacker Trans.png" alt="Logo Hacker" class="h-16 w-auto object-contain  dark:drop-shadow-[0_0_15px_rgba(255,255,255,0.8)] transition-all duration-300 transform hover:scale-105" onerror="this.src='https://placehold.co/100x100/1e3a8a/ffffff?text=Logo+2'">
+        </div>
+
+        <div class="text-center mb-8 relative z-10">
+            <h1 class="text-2xl sm:text-3xl font-bold text-blue-900 dark:text-white transition-colors mb-2">Pengumpulan Tugas Hacker</h1>
+            <p class="text-sm text-blue-600 dark:text-blue-300 transition-colors">Pastikan file yang diunggah berformat .zip yaaa</p>
+        </div>
+
+        <form id="tugasForm" class="space-y-6 relative z-10">
+            
+            <!-- Input Nama -->
+            <div>
+                <label for="nama" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 transition-colors">Nama Lengkap</label>
+                <input type="text" id="nama" name="nama" required placeholder="Masukkan nama Anda"
+                    class="w-full px-4 py-3 rounded-xl border border-blue-200 dark:border-slate-600 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 outline-none transition-all bg-white/50 dark:bg-slate-800/80 dark:text-white dark:placeholder-gray-400 backdrop-blur-sm">
+            </div>
+
+            <!-- Input Pertemuan -->
+            <div>
+                <label for="pertemuan" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 transition-colors">Pertemuan Ke-</label>
+                <select id="pertemuan" name="pertemuan" required
+                    class="w-full px-4 py-3 rounded-xl border border-blue-200 dark:border-slate-600 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 outline-none transition-all bg-white/50 dark:bg-slate-800/80 dark:text-white backdrop-blur-sm appearance-none cursor-pointer text-gray-700">
+                    <option value="" disabled selected class="text-gray-500">Pilih Pertemuan</option>
+                    <option value="1" class="text-gray-900 dark:text-white dark:bg-slate-800">Pertemuan 1</option>
+                    <option value="2" class="text-gray-900 dark:text-white dark:bg-slate-800">Pertemuan 2</option>
+                    <option value="3" class="text-gray-900 dark:text-white dark:bg-slate-800">Pertemuan 3</option>
+                    <option value="4" class="text-gray-900 dark:text-white dark:bg-slate-800">Pertemuan 4</option>
+                    <option value="5" class="text-gray-900 dark:text-white dark:bg-slate-800">Pertemuan 5</option>
+                    <option value="6" class="text-gray-900 dark:text-white dark:bg-slate-800">Pertemuan 6</option>
+                    <option value="7" class="text-gray-900 dark:text-white dark:bg-slate-800">Pertemuan 7</option>
+                    <option value="8" class="text-gray-900 dark:text-white dark:bg-slate-800">Pertemuan 8</option>
+                    <option value="9" class="text-gray-900 dark:text-white dark:bg-slate-800">Pertemuan 9</option>
+                    <option value="10" class="text-gray-900 dark:text-white dark:bg-slate-800">Pertemuan 10</option>
+                    <option value="11" class="text-gray-900 dark:text-white dark:bg-slate-800">Pertemuan 11</option>
+                    <option value="12" class="text-gray-900 dark:text-white dark:bg-slate-800">Pertemuan 12</option>
+                    <option value="13" class="text-gray-900 dark:text-white dark:bg-slate-800">Pertemuan 13</option>
+                    <option value="14" class="text-gray-900 dark:text-white dark:bg-slate-800">Pertemuan 14</option>
+                </select>
+            </div>
+
+            <!-- Input File ZIP -->
+            <div>
+                <span class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 transition-colors">File Tugas (ZIP)</span>
+                <label for="fileZip" id="dropzone" class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-blue-300 dark:border-slate-500 border-dashed rounded-xl hover:bg-blue-50 dark:hover:bg-slate-800/80 transition-all cursor-pointer bg-white/50 dark:bg-slate-800/50 w-full group">
+                    <div class="space-y-2 text-center">
+                        <svg class="mx-auto h-12 w-12 text-blue-400 dark:text-blue-500 group-hover:scale-110 transition-transform" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                            <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <div class="flex text-sm text-gray-600 dark:text-gray-400 justify-center transition-colors">
+                            <span class="relative font-medium text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500">
+                                Pilih file
+                            </span>
+                            <input id="fileZip" name="fileZip" type="file" accept=".zip, application/zip" class="sr-only" required>
+                            <p class="pl-1">atau seret dan lepas</p>
+                        </div>
+                        <p class="text-xs text-gray-500 dark:text-gray-500 transition-colors" id="fileNameDisplay">Hanya file berekstensi .zip</p>
+                    </div>
+                </label>
+            </div>
+
+            <!-- Tombol Submit -->
+            <button type="submit" id="submitBtn" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-blue-500 dark:from-blue-700 dark:to-blue-600 hover:from-blue-700 hover:to-blue-600 dark:hover:from-blue-600 dark:hover:to-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-slate-900 transition-all transform hover:-translate-y-0.5">
+                <span id="btnText">Kirim Tugas</span>
+                <svg id="btnSpinner" class="animate-spin ml-2 h-5 w-5 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+            </button>
+        </form>
+
+        <!-- Pesan Sukses -->
+        <div id="successMessage" class="hidden absolute inset-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md rounded-3xl z-20 flex flex-col items-center justify-center p-8 text-center opacity-0 transition-opacity duration-500">
+            <div class="w-20 h-20 bg-green-100 dark:bg-green-900/50 rounded-full flex items-center justify-center mb-4 transition-colors">
+                <svg class="w-10 h-10 text-green-500 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-2 transition-colors">Tugas Berhasil Terkirim!</h2>
+            <p class="text-gray-600 dark:text-gray-300 mb-6 transition-colors">Terima kasih, file Anda telah tersimpan ke Google Drive dan direkap di Spreadsheet.</p>
+            <button onclick="resetForm()" class="px-6 py-2 bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 font-medium rounded-lg hover:bg-blue-200 dark:hover:bg-blue-800/50 transition-colors">Kirim Ulang</button>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // 1. LOGIKA DARK MODE (TEMA GELAP)
+        // ==========================================
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+        // Cek preferensi user sebelumnya atau preferensi sistem (OS)
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            themeToggleLightIcon.style.display = 'block';
+            document.documentElement.classList.add('dark');
+        } else {
+            themeToggleDarkIcon.style.display = 'block';
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            // Toggle icons
+            if (themeToggleDarkIcon.style.display === 'none') {
+                themeToggleDarkIcon.style.display = 'block';
+                themeToggleLightIcon.style.display = 'none';
+            } else {
+                themeToggleDarkIcon.style.display = 'none';
+                themeToggleLightIcon.style.display = 'block';
+            }
+
+            // Ganti tema & Simpan ke Local Storage
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            }
+        });
+
+        // ==========================================
+        // 2. LOGIKA UPLOAD FORM KE GOOGLE APPS SCRIPT
+        // ==========================================
+        // GANTI URL DI BAWAH INI DENGAN URL WEB APP GOOGLE APPS SCRIPT ANDA
+        const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxB4czOMs1oG_ge-PaX9lzKfkPd4lljKL2V5TK8tR4KFAVd-ll1goPEKIViBBn6nnYx/exec'; 
+
+        const form = document.getElementById('tugasForm');
+        const fileInput = document.getElementById('fileZip');
+        const dropzone = document.getElementById('dropzone');
+        const fileNameDisplay = document.getElementById('fileNameDisplay');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const btnSpinner = document.getElementById('btnSpinner');
+        const successMessage = document.getElementById('successMessage');
+
+        // Handling File Selection & Dropzone UI
+        fileInput.addEventListener('change', (e) => {
+            updateFileName(e.target.files);
+        });
+
+        dropzone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropzone.classList.add('bg-blue-100', 'dark:bg-slate-700', 'border-blue-500');
+        });
+
+        dropzone.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            dropzone.classList.remove('bg-blue-100', 'dark:bg-slate-700', 'border-blue-500');
+        });
+
+        dropzone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropzone.classList.remove('bg-blue-100', 'dark:bg-slate-700', 'border-blue-500');
+            const files = e.dataTransfer.files;
+            
+            if (files.length > 0) {
+                if (files[0].name.toLowerCase().endsWith('.zip')) {
+                    fileInput.files = files; 
+                    updateFileName(files);
+                } else {
+                    alert('Mohon hanya mengunggah file berekstensi .zip');
+                }
+            }
+        });
+
+        function updateFileName(files) {
+            if (files.length > 0) {
+                fileNameDisplay.textContent = `File terpilih: ${files[0].name} (${(files[0].size / 1024 / 1024).toFixed(2)} MB)`;
+                fileNameDisplay.classList.add('text-blue-600', 'dark:text-blue-400', 'font-medium');
+                fileNameDisplay.classList.remove('text-gray-500', 'dark:text-gray-500');
+            } else {
+                fileNameDisplay.textContent = 'Hanya file berekstensi .zip';
+                fileNameDisplay.classList.remove('text-blue-600', 'dark:text-blue-400', 'font-medium');
+                fileNameDisplay.classList.add('text-gray-500', 'dark:text-gray-500');
+            }
+        }
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const file = fileInput.files[0];
+            if (!file) return;
+
+            // UI Loading State
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+            btnText.textContent = 'Mengirim...';
+            btnSpinner.classList.remove('hidden');
+
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                const base64Data = e.target.result.split('base64,')[1];
+                
+                const payload = {
+                    nama: document.getElementById('nama').value,
+                    pertemuan: document.getElementById('pertemuan').value,
+                    fileName: file.name,
+                    mimeType: file.type || 'application/zip',
+                    fileData: base64Data
+                };
+
+                // Mode Simulasi jika URL belum diisi
+                if (!GOOGLE_APPS_SCRIPT_URL) {
+                    console.log("Simulasi Pengiriman:", payload);
+                    setTimeout(() => {
+                        showSuccess();
+                    }, 2000);
+                    return;
+                }
+
+                // Kirim ke Google
+                fetch(GOOGLE_APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(payload)
+                })
+                .then(response => response.text())
+                .then(result => {
+                    showSuccess();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Terjadi kesalahan saat mengirim data. Pastikan koneksi stabil.');
+                    resetBtn();
+                });
+            };
+
+            reader.onerror = function() {
+                alert('Gagal membaca file!');
+                resetBtn();
+            };
+
+            reader.readAsDataURL(file);
+        });
+
+        function showSuccess() {
+            successMessage.classList.remove('hidden');
+            setTimeout(() => {
+                successMessage.classList.remove('opacity-0');
+            }, 10);
+            resetBtn();
+        }
+
+        function resetBtn() {
+            submitBtn.disabled = false;
+            submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+            btnText.textContent = 'Kirim Tugas';
+            btnSpinner.classList.add('hidden');
+        }
+
+        function resetForm() {
+            form.reset();
+            updateFileName([]);
+            successMessage.classList.add('opacity-0');
+            setTimeout(() => {
+                successMessage.classList.add('hidden');
+            }, 500); 
+        }
+    </script>
+</body>
+</html>
