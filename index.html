@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pengumpulan Tugas Hacker</title>
+    <link rel="icon" href="/Image/Logo Iot transpa.png" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" href="/Image/Logo Hacker Trans.png" type="image/x-icon">
     <!-- Konfigurasi Tailwind untuk mendeteksi class 'dark' -->
     <script>
         tailwind.config = {
@@ -59,14 +59,14 @@
         </button>
 
         <div class="flex items-center justify-center space-x-6 mb-8 relative z-10 pt-4">
-            <img src="/Image/Logo Iot transpa.png" alt="Logo Lab IoT" class="h-16 w-auto object-contain  dark:drop-shadow-[0_0_15px_rgba(255,255,255,0.8)] transition-all duration-300 transform hover:scale-105" onerror="this.src='https://placehold.co/100x100/1e3a8a/ffffff?text=Logo+1'">
+            <img src="/Image/Logo Hacker Trans.png" alt="Logo Hacker Trans" class="h-16 w-auto object-contain drop-shadow-md dark:drop-shadow-[0_0_15px_rgba(255,255,255,0.8)] transition-all duration-300 transform hover:scale-105" onerror="this.src='https://placehold.co/100x100/1e3a8a/ffffff?text=Logo+1'">
             <div class="h-10 w-px bg-blue-200 dark:bg-slate-600 transition-colors"></div>
-            <img src="/Image/Logo Hacker Trans.png" alt="Logo Hacker" class="h-16 w-auto object-contain  dark:drop-shadow-[0_0_15px_rgba(255,255,255,0.8)] transition-all duration-300 transform hover:scale-105" onerror="this.src='https://placehold.co/100x100/1e3a8a/ffffff?text=Logo+2'">
+            <img src="/Image/Logo Iot transpa.png" alt="Logo Iot" class="h-16 w-auto object-contain drop-shadow-md dark:drop-shadow-[0_0_15px_rgba(255,255,255,0.8)] transition-all duration-300 transform hover:scale-105" onerror="this.src='https://placehold.co/100x100/1e3a8a/ffffff?text=Logo+2'">
         </div>
 
         <div class="text-center mb-8 relative z-10">
             <h1 class="text-2xl sm:text-3xl font-bold text-blue-900 dark:text-white transition-colors mb-2">Pengumpulan Tugas Hacker</h1>
-            <p class="text-sm text-blue-600 dark:text-blue-300 transition-colors">Pastikan file yang diunggah berformat .zip yaaa</p>
+            <p class="text-sm text-blue-600 dark:text-blue-300 transition-colors">Pastikan file yang diunggah berformat .zip</p>
         </div>
 
         <form id="tugasForm" class="space-y-6 relative z-10">
@@ -75,6 +75,20 @@
             <div>
                 <label for="nama" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 transition-colors">Nama Lengkap</label>
                 <input type="text" id="nama" name="nama" required placeholder="Masukkan nama Anda"
+                    class="w-full px-4 py-3 rounded-xl border border-blue-200 dark:border-slate-600 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 outline-none transition-all bg-white/50 dark:bg-slate-800/80 dark:text-white dark:placeholder-gray-400 backdrop-blur-sm">
+            </div>
+
+            <!-- Input Universitas -->
+            <div>
+                <label for="universitas" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 transition-colors">Universitas</label>
+                <input type="text" id="universitas" name="universitas" required placeholder="Contoh: Universitas Pendidikan Indonesia"
+                    class="w-full px-4 py-3 rounded-xl border border-blue-200 dark:border-slate-600 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 outline-none transition-all bg-white/50 dark:bg-slate-800/80 dark:text-white dark:placeholder-gray-400 backdrop-blur-sm">
+            </div>
+
+            <!-- Input Program Studi -->
+            <div>
+                <label for="prodi" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 transition-colors">Program Studi</label>
+                <input type="text" id="prodi" name="prodi" required placeholder="Contoh: Bisnis Digital"
                     class="w-full px-4 py-3 rounded-xl border border-blue-200 dark:border-slate-600 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 outline-none transition-all bg-white/50 dark:bg-slate-800/80 dark:text-white dark:placeholder-gray-400 backdrop-blur-sm">
             </div>
 
@@ -139,7 +153,7 @@
                 </svg>
             </div>
             <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-2 transition-colors">Tugas Berhasil Terkirim!</h2>
-            <p class="text-gray-600 dark:text-gray-300 mb-6 transition-colors">Thankyou guyss, see you next week untuk tugas baru.</p>
+            <p class="text-gray-600 dark:text-gray-300 mb-6 transition-colors">Terima kasih, filenya udah terkirim!</p>
             <button onclick="resetForm()" class="px-6 py-2 bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 font-medium rounded-lg hover:bg-blue-200 dark:hover:bg-blue-800/50 transition-colors">Kirim Ulang</button>
         </div>
     </div>
@@ -256,6 +270,8 @@
                 
                 const payload = {
                     nama: document.getElementById('nama').value,
+                    universitas: document.getElementById('universitas').value,
+                    prodi: document.getElementById('prodi').value,
                     pertemuan: document.getElementById('pertemuan').value,
                     fileName: file.name,
                     mimeType: file.type || 'application/zip',
